@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-require("./routes/htmlroutes")(app, path);
-require("./routes/apiroutes")(app);
+require("./routes/html")(app, path);
+require("./routes/api")(app);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   seNewUrlParser: true,

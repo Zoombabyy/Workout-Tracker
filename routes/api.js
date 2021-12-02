@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
   app.get("/api/workouts", (req, res) => {
-    db.Workout.find()
+    db.Workouts.find()
       .then((data) => {
         res.json(data);
       })
@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find()
+    db.Workouts.find()
       .then((data) => {
         res.json(data);
       })
@@ -22,7 +22,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/workouts", (req, res) => {
-    db.Workout.create({})
+    db.Workouts.create({})
       .then((data) => res.json(data))
       .catch((err) => {
         res.json(err);
@@ -30,7 +30,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/workouts/range", (req, res) => {
-    db.Workout.create({})
+    db.Workouts.create({})
       .then((data) => res.json(data))
       .catch((err) => {
         res.json(err);
@@ -38,7 +38,7 @@ module.exports = function (app) {
   });
 
   app.put("/api/workouts/:id", ({ body, params }, res) => {
-    db.Workout.findByIdAndUpdate(
+    db.Workouts.findByIdAndUpdate(
       params.id,
       { $push: { exercises: body } },
       { new: true, runValidators: true }
